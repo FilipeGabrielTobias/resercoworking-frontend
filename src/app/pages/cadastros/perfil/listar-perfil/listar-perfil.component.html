@@ -1,0 +1,24 @@
+<h1>Listagem de Perfis</h1>
+<div class="adicionar-registro">
+    <a nz-button nzType="primary" [routerLink]="['./incluir']">Adicionar +</a>
+</div>
+<nz-table #basicTable [nzData]="perfis">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data" (click)="visualizar(data)">
+            <td>{{ data?.id }}</td>
+            <td>{{ data?.nome }}</td>
+            <td (click)="$event.stopPropagation()">
+                <a (click)="alterar(data)">Editar</a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a (click)="excluir(data.id)">Excluir</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

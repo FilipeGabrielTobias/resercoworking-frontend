@@ -1,0 +1,27 @@
+<h1>Incluir Perfil</h1>
+<form nz-form [formGroup]="perfilForm" (ngSubmit)="salvar()">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nome" nzRequired>
+            <span>Nome</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe o nome">
+            <input nz-input id="nome" formControlName="nome" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="descricao" nzRequired>
+            <span>Descricao</span>
+        </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe a descrição">
+            <input nz-input id="descricao" formControlName="descricao" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary">Salvar</button>
+        </nz-form-control>
+        <!-- <nz-form-control [nzSpan]="20">
+            <button nz-button nzType="default" >Voltar</button>
+        </nz-form-control> -->
+    </nz-form-item>
+</form>

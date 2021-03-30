@@ -1,0 +1,9 @@
+<b>ReserCoworking</b> | Login
+<form [formGroup]="loginForm">
+    <input type="text" formControlName="email" class="form-control" placeholder="Email">
+    <input type="password" formControlName="senha" class="form-control" placeholder="Senha">
+    <div class="row">
+        <button type="submit" (click)="login()" [disabled]="loginForm.invalid"
+            class="btn btn-primary btn-block btn-flat">Entrar</button>
+    </div>
+</form>
