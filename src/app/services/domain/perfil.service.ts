@@ -1,12 +1,17 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
 import { Observable } from "rxjs";
 import { PerfilModel } from "src/app/models/perfil.model";
 import { environment } from "src/environments/environment";
 
 @Injectable()
-export class PerfilService {
+export class PerfilService implements Resolve<PerfilModel> {
     constructor(private http: HttpClient) {}
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): PerfilModel | Observable<PerfilModel> | Promise<PerfilModel> {
+        return this.getPerfilById(route.params.id);
+    }
 
     baseUrl(): string {
         return '/perfil';

@@ -2,7 +2,7 @@
     <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
         [nzTrigger]="null">
         <div class="sidebar-logo">
-            <a href="https://ng.ant.design/" target="_blank">
+            <a [routerLink]="['/home']" target="_blank">
                 <img src="https://pbs.twimg.com/profile_images/1260427248106115072/M9ofqloN.png" alt="logo">
                 <h1>ReserCoworking</h1>
             </a>
@@ -48,6 +48,9 @@
                 <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
                     <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
                 </span>
+                <a class="header-logout" (click)="logout()">
+                    Sair
+                </a>
             </div>
         </nz-header>
         <nz-content>

@@ -33,6 +33,7 @@ export class ManterModalidadeEspacoComponent implements OnInit {
       id: [this.modalidadeEspaco.id, []],
       nome: [this.modalidadeEspaco.nome, [Validators.required]],
       descricao: [this.modalidadeEspaco.descricao, [Validators.required]],
+      situacao: [this.modalidadeEspaco.situacao, [Validators.required]]
     });
   }
 
@@ -50,4 +51,7 @@ export class ManterModalidadeEspacoComponent implements OnInit {
     }
   }
 
+  voltar(): void {
+    history.go(-1);
+  }
 }

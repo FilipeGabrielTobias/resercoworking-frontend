@@ -1,9 +1,26 @@
-<b>ReserCoworking</b> | Login
-<form [formGroup]="loginForm">
-    <input type="text" formControlName="email" class="form-control" placeholder="Email">
-    <input type="password" formControlName="senha" class="form-control" placeholder="Senha">
-    <div class="row">
-        <button type="submit" (click)="login()" [disabled]="loginForm.invalid"
-            class="btn btn-primary btn-block btn-flat">Entrar</button>
+<nz-card class="login-card">
+    <div>
+        <img style="width: 50%; height: 50%; display: block; margin-left: auto; margin-right: auto;" src="https://pbs.twimg.com/profile_images/1260427248106115072/M9ofqloN.png" alt="logo">
+        <h2 style="text-align: center;">ReserCoworking</h2>
     </div>
-</form>
+    <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="email">E-mail</nz-form-label>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Informe o e-mail!">
+                <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="email" placeholder="E-mail" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="senha">Senha</nz-form-label>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Informe a senha!">
+                <nz-input-group nzPrefixIcon="lock">
+                    <input type="password" nz-input formControlName="senha" placeholder="Senha" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Entrar</button>
+        <!-- Ou <a (click)="cadastrar()"> cadastre-se! </a> -->
+    </form>
+</nz-card>

@@ -15,11 +15,15 @@ export class AuthenticationService {
     }
 
     baseUrl(): string {
-        return 'auth/login';
+        return '/login';
     }
 
     authenticate(form: FormGroup): Observable<User>{
         return this.http.post<User>(environment.api + this.baseUrl(), form);
+    }
+
+    isLoggedIn(): boolean {
+        return this.storage.getLocalUser() ? true : false;
     }
 
     logout() {

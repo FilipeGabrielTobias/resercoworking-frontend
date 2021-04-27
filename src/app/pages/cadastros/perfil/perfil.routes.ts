@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PerfilService } from 'src/app/services/domain/perfil.service';
 import { ListarPerfilComponent } from './listar-perfil/listar-perfil.component';
 import { ManterPerfilComponent } from './manter-perfil/manter-perfil.component';
 import { VisualizarPerfilComponent } from './visualizar-perfil/visualizar-perfil.component';
@@ -16,8 +17,12 @@ const ROUTES = [
     // canActivate: [LoggedInGuard]
   },
   { 
-    path: 'alterar/:id', 
+    path: 'alterar/:id',
+    resolve: {
+      entity: PerfilService
+    },
     component: ManterPerfilComponent, 
+    
     // canLoad: [LoggedInGuard], 
     // canActivate: [LoggedInGuard]
   },

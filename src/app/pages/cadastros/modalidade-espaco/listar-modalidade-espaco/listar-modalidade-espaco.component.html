@@ -15,9 +15,9 @@
             <td>{{ data?.id }}</td>
             <td>{{ data?.nome }}</td>
             <td (click)="$event.stopPropagation()">
-                <a (click)="alterar(data)">Editar</a>
+                <button nz-button (click)="alterar(data)"><i nz-icon nzType="edit"></i></button>
                 <nz-divider nzType="vertical"></nz-divider>
-                <a (click)="excluir(data.id)">Excluir</a>
+                <button nz-button (click)="excluir(data.id)"><i nz-icon nzType="delete"></i></button>
             </td>
         </tr>
     </tbody>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { first } from 'rxjs/operators';
 import { PerfilService } from 'src/app/services/domain/perfil.service';
 import { PerfilModel } from '../../../../models/perfil.model';
@@ -13,7 +14,10 @@ export class ListarPerfilComponent implements OnInit {
 
   perfis: PerfilModel[] = [];
 
-  constructor(private router: Router, private route: ActivatedRoute, private perfilService: PerfilService) { }
+  constructor(private router: Router, 
+              private route: ActivatedRoute, 
+              private perfilService: PerfilService,
+              private modalService: NzModalService) { }
 
   ngOnInit(): void {
     this.getPerfis();

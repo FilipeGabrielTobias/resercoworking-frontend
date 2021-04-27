@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutDefaultComponent } from './theme/default/default.component';
 import { SharedModule } from './shared/shared.module';
+import { AuthenticationGuard } from './security/guard/authentication.guard';
 
 const routes: Routes = [
   { 
     path: '', 
     pathMatch: 'full', 
-    redirectTo: '/welcome' 
+    redirectTo: '/home' 
   },
   {
     path: 'auth',
@@ -16,11 +17,11 @@ const routes: Routes = [
   { 
     path: '', 
     component: LayoutDefaultComponent,
-    // canLoad: [LoggedInGuard], 
-    // canActivate: [LoggedInGuard], 
+    canLoad: [AuthenticationGuard], 
+    canActivate: [AuthenticationGuard], 
     children: [
       {
-        path: 'welcome',
+        path: 'home',
         loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
       }, {
         path: 'usuario', 

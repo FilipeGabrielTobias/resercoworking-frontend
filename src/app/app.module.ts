@@ -11,6 +11,9 @@ import { LayoutModule } from './theme/layout.module';
 import { IconsProviderModule } from './icons-provider.module';
 import { AuthenticationService } from './services/authentication.service';
 import { SharedModule } from './shared/shared.module';
+import { StorageService } from './services/storage.service';
+import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
+import { AuthenticationGuard } from './security/guard/authentication.guard';
 
 registerLocaleData(en);
 
@@ -30,7 +33,10 @@ registerLocaleData(en);
     SharedModule
   ],
   providers: [
+    StorageService,
     AuthenticationService,
+    AuthenticationGuard,
+    AuthInterceptorProvider,
     { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })

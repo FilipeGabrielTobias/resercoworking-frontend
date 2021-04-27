@@ -6,7 +6,7 @@ import { User } from "../security/authentication/login/user.model";
 export class StorageService {
 
     getLocalUser(): User {
-        let user = localStorage.getItem(STORAGE_KEYS.localUser);
+        let user = sessionStorage.getItem(STORAGE_KEYS.localUser);
         if (user == null) {
             return null;
         }else {
@@ -16,9 +16,9 @@ export class StorageService {
 
     setLocalUser(obj: User) {
         if (obj == null) {
-            localStorage.removeItem(STORAGE_KEYS.localUser);
+            sessionStorage.removeItem(STORAGE_KEYS.localUser);
         }else {
-            localStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
+            sessionStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
         }
     }
 }

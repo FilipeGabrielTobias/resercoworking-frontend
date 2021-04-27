@@ -52,4 +52,7 @@ export class ManterPremiacaoComponent implements OnInit {
     }
   }
 
+  voltar(): void {
+    history.go(-1);
+  }
 }

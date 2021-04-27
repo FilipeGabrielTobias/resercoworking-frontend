@@ -1,0 +1,57 @@
+.login-card {
+    @media (min-width: 576px) {
+      padding: 60px;
+      border: 1px solid #c8ced3;
+      border-radius: 0.25rem;
+      max-width: 460px;
+      margin: auto;
+    
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translateY(-50%) translateX(-50%);
+      transform: translateY(-50%) translateX(-50%);
+    }
+    
+    @media (min-width: 576px) and (max-width: 768px - 1px) {
+      left: 30%;
+      -webkit-transform: translateY(-50%) translateX(-20%);
+      transform: translateY(-50%) translateX(-20%);
+    }
+    
+    @media (max-width: 576px - 1px) {
+      padding: 0 30px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+    
+    @media (max-width: 576px - 1px) {
+      .small-bg {
+        background-color: white;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+}
+
+.login-form {
+    max-width: 300px;
+}
+
+.login-form-margin {
+    margin-bottom: 16px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+}

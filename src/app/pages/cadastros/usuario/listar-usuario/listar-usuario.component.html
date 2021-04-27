@@ -7,7 +7,7 @@
         <tr>
             <th>Id</th>
             <th>Nome</th>
-            <th>Sobrenome</th>
+            <th>E-mail</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -15,11 +15,11 @@
         <tr *ngFor="let data of basicTable.data">
             <td>{{ data?.id }}</td>
             <td>{{ data?.nome }}</td>
-            <td>{{ data?.sobrenome }}</td>
-            <td>
-                <a>Editar</a>
+            <td>{{ data?.email }}</td>
+            <td (click)="$event.stopPropagation()">
+                <button nz-button><i nz-icon nzType="edit"></i></button>
                 <nz-divider nzType="vertical"></nz-divider>
-                <a>Excluir</a>
+                <button nz-button><i nz-icon nzType="delete"></i></button>
             </td>
         </tr>
     </tbody>

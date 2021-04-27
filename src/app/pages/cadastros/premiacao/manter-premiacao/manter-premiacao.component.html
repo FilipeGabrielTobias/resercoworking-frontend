@@ -1,42 +1,39 @@
 <h1>Incluir Premiação</h1>
-<form nz-form [formGroup]="premiacaoForm" (ngSubmit)="salvar()">
+<form nz-form [formGroup]="premiacaoForm">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nome" nzRequired>Nome</nz-form-label>
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nome" nzRequired>
-            <span>Nome</span>
-        </nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe o nome">
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o nome">
             <input nz-input id="nome" formControlName="nome" />
         </nz-form-control>
     </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="descricao" nzRequired>Descrição</nz-form-label>
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="descricao" nzRequired>
-            <span>Descrição</span>
-        </nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe a descrição">
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a descrição">
             <input nz-input id="descricao" formControlName="descricao" />
         </nz-form-control>
     </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="pontosNecessarios">Pontos Necessários</nz-form-label>
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="pontosNecessarios">Pontos Necessários</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe os pontos necessários">
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe os pontos necessários">
             <input nz-input formControlName="pontosNecessarios" id="pontosNecessarios" />
         </nz-form-control>
     </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao" nzRequired>Situação</nz-form-label>
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao" nzRequired>Situação</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe sua senha">
-            <nz-select formControlName="situacao">
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a situação">
+            <nz-switch formControlName="situacao"></nz-switch>
+            <!-- <nz-select formControlName="situacao">
                 <nz-option nzValue="true" nzLabel="Ativo"></nz-option>
                 <nz-option nzValue="false" nzLabel="Inativo"></nz-option>
-              </nz-select>
+              </nz-select> -->
         </nz-form-control>
     </nz-form-item>
     <nz-form-item nz-row class="register-area">
-        <nz-form-control [nzSpan]="14" [nzOffset]="6">
-            <button nz-button nzType="primary">Salvar</button>
+        <nz-form-control nz-col nzSm="2" nzXs="24">
+            <button nz-button nzType="primary" (click)="salvar()">Salvar</button>
         </nz-form-control>
-        <!-- <nz-form-control [nzSpan]="20">
-            <button nz-button nzType="default" >Voltar</button>
-        </nz-form-control> -->
+        <nz-form-control nz-col>
+            <button nz-button nzType="default" (click)="voltar()">Voltar</button>
+        </nz-form-control>
     </nz-form-item>
 </form>

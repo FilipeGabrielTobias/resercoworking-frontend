@@ -1,37 +1,33 @@
 <h1>Incluir Usuário</h1>
-<form nz-form [formGroup]="usuarioForm" (ngSubmit)="salvar()">
+<form nz-form [formGroup]="usuarioForm">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nome" nzRequired>Nome</nz-form-label>
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nome" nzRequired>
-            <span>Nome</span>
-        </nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe o seu nome">
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o nome">
             <input nz-input id="nome" formControlName="nome" />
         </nz-form-control>
     </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="sobrenome" nzRequired>Sobrenome</nz-form-label>
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="sobrenome" nzRequired>
-            <span>Sobrenome</span>
-        </nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe o seu sobrenome">
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o sobrenome">
             <input nz-input id="sobrenome" formControlName="sobrenome" />
         </nz-form-control>
     </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe seu e-mail">
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o e-mail">
             <input nz-input formControlName="email" id="email" />
         </nz-form-control>
     </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="senha" nzRequired>Senha</nz-form-label>
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="senha" nzRequired>Senha</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe sua senha">
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a senha">
             <input nz-input type="password" id="senha" formControlName="senha"
                 (ngModelChange)="updateConfirmValidator()" />
         </nz-form-control>
     </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="confirmacaoSenha" nzRequired>Confirmação de senha</nz-form-label>
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="confirmacaoSenha" nzRequired>Confirmação de senha</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+        <nz-form-control [nzSm]="6" [nzXs]="24" [nzErrorTip]="errorTpl">
             <input nz-input type="password" formControlName="confirmacaoSenha" id="confirmacaoSenha" />
             <ng-template #errorTpl let-control>
                 <ng-container *ngIf="control.hasError('required')">
@@ -43,20 +39,22 @@
             </ng-template>
         </nz-form-control>
     </nz-form-item>
-    <nz-form-item>
+    <div *ngIf="!clienteCad">
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="perfil" nzRequired>Perfil</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Informe o perfil">
-            <nz-select formControlName="perfil">
-                <nz-option *ngFor="let perfil of perfis" [nzValue]="perfil" [nzLabel]="perfil.nome"></nz-option>
-              </nz-select>
-        </nz-form-control>
-    </nz-form-item>
+        <nz-form-item>
+            <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o perfil">
+                <nz-select formControlName="perfil">
+                    <nz-option *ngFor="let perfil of perfis" [nzValue]="perfil" [nzLabel]="perfil.nome"></nz-option>
+                  </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+    </div>
     <nz-form-item nz-row class="register-area">
-        <nz-form-control [nzSpan]="14" [nzOffset]="6">
-            <button nz-button nzType="primary">Salvar</button>
+        <nz-form-control nz-col nzSm="2" nzXs="24">
+            <button nz-button nzType="primary" (click)="salvar()">Salvar</button>
         </nz-form-control>
-        <!-- <nz-form-control [nzSpan]="20">
-            <button nz-button nzType="default" >Voltar</button>
-        </nz-form-control> -->
+        <nz-form-control nz-col nzSm="2" nzXs="24">
+            <button nz-button nzType="default" (click)="voltar()">Voltar</button>
+        </nz-form-control>
     </nz-form-item>
 </form>

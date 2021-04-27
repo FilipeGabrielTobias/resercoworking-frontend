@@ -20,4 +20,8 @@ export class VisualizarPerfilComponent implements OnInit {
         this.perfil = value;
       })
   }
+
+  voltar(): void {
+    history.go(-1);
+  }
 }

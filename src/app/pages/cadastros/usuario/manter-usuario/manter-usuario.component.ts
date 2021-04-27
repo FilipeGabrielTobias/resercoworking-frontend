@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { PerfilService } from 'src/app/services/domain/perfil.service';
+import { ReactiveFormsUtils } from 'src/app/shared/utils/reactive-forms.utils';
 import { PerfilModel } from '../../../../models/perfil.model';
 import { UsuarioService } from '../../../../services/domain/usuario.service';
 
@@ -15,10 +16,18 @@ export class ManterUsuarioComponent implements OnInit {
 
   usuarioForm: FormGroup;
   perfis: PerfilModel[] = [];
+  clienteCad: boolean;
 
-  constructor(private fb: FormBuilder, private UsuarioService: UsuarioService, private perfilService: PerfilService, private router: Router) { }
+  constructor(private fb: FormBuilder, 
+              private UsuarioService: UsuarioService, 
+              private perfilService: PerfilService, 
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    if (this.route.snapshot.queryParamMap.get('clienteCad')) {
+      this.clienteCad = true;
+    }
     this.perfilService.getPerfis().pipe(first()).subscribe(value => this.perfis = value);
     this.usuarioForm = this.fb.group({
       nome: [null, [Validators.required]],
@@ -44,10 +53,16 @@ export class ManterUsuarioComponent implements OnInit {
   };
 
   salvar() {
+    if (!ReactiveFormsUtils.eval(this.usuarioForm)) {
+      return;
+    }
     this.UsuarioService.saveUsuario(this.usuarioForm.value)
       .subscribe(value => {
         this.router.navigate(['/usuario']);
       })
   }
 
+  voltar(): void {
+    history.go(-1);
+  }
 }
