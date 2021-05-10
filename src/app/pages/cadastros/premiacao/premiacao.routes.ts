@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { AuthenticationGuard } from 'src/app/security/guard/authentication.guard';
+import { PremiacaoService } from 'src/app/services/domain/premiacao.service';
 import { ListarPremiacaoComponent } from './listar-premiacao/listar-premiacao.component';
 import { ManterPremiacaoComponent } from './manter-premiacao/manter-premiacao.component';
 import { VisualizarPremiacaoComponent } from './visualizar-premiacao/visualizar-premiacao.component';
@@ -7,19 +7,33 @@ import { VisualizarPremiacaoComponent } from './visualizar-premiacao/visualizar-
 const ROUTES = [
   { 
     path: '', 
-    component: ListarPremiacaoComponent 
+    component: ListarPremiacaoComponent,
+    canLoad: [AuthenticationGuard], 
+    canActivate: [AuthenticationGuard] 
   },
   { 
     path: 'incluir', 
-    component: ManterPremiacaoComponent 
+    component: ManterPremiacaoComponent,
+    canLoad: [AuthenticationGuard], 
+    canActivate: [AuthenticationGuard] 
   },
   { 
-    path: 'alterar/:id', 
-    component: ManterPremiacaoComponent 
+    path: 'alterar/:id',
+    resolve: {
+      entity: PremiacaoService
+    },
+    component: ManterPremiacaoComponent,
+    canLoad: [AuthenticationGuard], 
+    canActivate: [AuthenticationGuard] 
   },
   { 
     path: 'visualizar/:id', 
-    component: VisualizarPremiacaoComponent 
+    resolve: {
+      entity: PremiacaoService
+    },
+    component: VisualizarPremiacaoComponent ,
+    canLoad: [AuthenticationGuard], 
+    canActivate: [AuthenticationGuard]
   },
 ];
 export const premiacaoRoutes = ROUTES;

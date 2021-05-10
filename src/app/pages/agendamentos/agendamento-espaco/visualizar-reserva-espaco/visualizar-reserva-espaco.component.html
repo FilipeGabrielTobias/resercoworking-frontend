@@ -1,0 +1,20 @@
+<h1>Visualização de Espaço</h1>
+<label>Nome</label>
+<p><strong>{{espaco?.nome}}</strong></p>
+<label>Descrição</label>
+<p><strong>{{espaco?.descricao}}</strong></p>
+<label>Metros Quadrados</label>
+<p><strong>{{espaco?.metrosQuadrados}}</strong></p>
+<label>Pontos</label>
+<p><strong>{{espaco?.pontos}}</strong></p>
+<label>Nota</label>
+<p><strong>{{espaco?.nota}}</strong></p>
+<label>Situação</label>
+<p><strong>{{(!espaco?.situacao) ? 'Inativa' : 'Ativo'}}</strong></p>
+<label>Modalidade de Espaço</label>
+<p><strong>{{espaco?.modalidadeEspaco.descricao}}</strong></p>
+<div nz-row class="register-area">
+    <div nz-col nzSm="2" nzXs="24">
+        <button nz-button nzType="default" (click)="voltar()">Voltar</button>
+    </div>
+</div>

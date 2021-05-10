@@ -37,7 +37,20 @@ export class ListarPerfilComponent implements OnInit {
     this.router.navigate(['./alterar', data.id], {relativeTo: this.route});
   }
 
-  excluir(id): void {
+  mostrarModalConfirmacao(id: number): void {
+    this.modalService.confirm({
+      nzTitle: 'Você tem certeza que deseja excluir o registro?',
+      nzContent: '<b style="color: red;">Ao excluir não será possível desfazer</b>',
+      nzOkText: 'Sim',
+      nzOkType: 'primary',
+      nzOkDanger: true,
+      nzOnOk: () => this.excluir(id),
+      nzCancelText: 'Não',
+      nzOnCancel: () => console.log('Cancel')
+    });
+  }
+
+  excluir(id: number): void {
     this.perfilService.deletePerfil(id)
       .subscribe(value => {
         this.getPerfis();

@@ -1,0 +1,32 @@
+<h1>Listagem de Reservas de Espaço</h1>
+<div class="adicionar-registro">
+    <a nz-button nzType="primary" [routerLink]="['./incluir']">Adicionar +</a>
+</div>
+<nz-table #basicTable [nzData]="reservas">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Data Inicial</th>
+            <th>Data Final</th>
+            <th>Hora Inicial</th>
+            <th>Hora Final</th>
+            <th>Situação</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data" (click)="visualizar(data)">
+            <td>{{ data?.id }}</td>
+            <td>{{ data?.dataInicial }}</td>
+            <td>{{ data?.dataFinal }}</td>
+            <td>{{ data?.horaInicial }}</td>
+            <td>{{ data?.horaFinal }}</td>
+            <td>{{ (!data?.situacao) ? 'Inativo' : 'Ativo' }}</td>
+            <td (click)="$event.stopPropagation()">
+                <button nz-button (click)="alterar(data)"><i nz-icon nzType="edit"></i></button>
+                <nz-divider nzType="vertical"></nz-divider>
+                <button nz-button (click)="mostrarModalConfirmacao(data.id)"><i nz-icon nzType="delete"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

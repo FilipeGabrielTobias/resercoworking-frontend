@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ModalidadeEspacoService } from '../../../../services/domain/modalidade-espaco.service';
 import { ModalidadeEspacoModel } from '../../../../models/modalidade-espaco.model';
 
 @Component({
@@ -12,12 +11,14 @@ export class VisualizarModalidadeEspacoComponent implements OnInit {
 
   modalidadeEspaco: ModalidadeEspacoModel;
 
-  constructor(private route: ActivatedRoute, private modalidadeEspacoService: ModalidadeEspacoService) { }
+  constructor(private route: ActivatedRoute) {
+    this.modalidadeEspaco = this.route.snapshot.data.entity || new ModalidadeEspacoModel();
+  }
 
   ngOnInit() {
-    this.modalidadeEspacoService.getModalidadeEspacoById(this.route.snapshot.params.id)
-      .subscribe(value => {
-        this.modalidadeEspaco = value;
-      })
+  }
+
+  voltar(): void {
+    history.go(-1);
   }
 }

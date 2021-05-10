@@ -7,6 +7,7 @@
         <tr>
             <th>Id</th>
             <th>Nome</th>
+            <th>Situação</th>
             <th>Ações</th>
         </tr>
     </thead>
@@ -14,10 +15,11 @@
         <tr *ngFor="let data of basicTable.data" (click)="visualizar(data)">
             <td>{{ data?.id }}</td>
             <td>{{ data?.nome }}</td>
+            <td>{{ (!data?.situacao) ? 'Inativo' : 'Ativo' }}</td>
             <td (click)="$event.stopPropagation()">
                 <button nz-button (click)="alterar(data)"><i nz-icon nzType="edit"></i></button>
                 <nz-divider nzType="vertical"></nz-divider>
-                <button nz-button (click)="excluir(data.id)"><i nz-icon nzType="delete"></i></button>
+                <button nz-button (click)="mostrarModalConfirmacao(data.id)"><i nz-icon nzType="delete"></i></button>
             </td>
         </tr>
     </tbody>

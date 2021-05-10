@@ -3,5 +3,5 @@ export class PremiacaoModel {
     nome: string;
     descricao: string;
     pontosNecessarios: number;
-    situacao: boolean;
+    situacao: boolean = true;
 }

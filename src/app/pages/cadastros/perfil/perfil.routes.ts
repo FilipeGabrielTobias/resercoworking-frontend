@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthenticationGuard } from 'src/app/security/guard/authentication.guard';
 import { PerfilService } from 'src/app/services/domain/perfil.service';
 import { ListarPerfilComponent } from './listar-perfil/listar-perfil.component';
 import { ManterPerfilComponent } from './manter-perfil/manter-perfil.component';
@@ -8,13 +9,15 @@ import { VisualizarPerfilComponent } from './visualizar-perfil/visualizar-perfil
 const ROUTES = [
   { 
     path: '', 
-    component: ListarPerfilComponent 
+    component: ListarPerfilComponent,
+    canLoad: [AuthenticationGuard], 
+    canActivate: [AuthenticationGuard]
   },
   { 
     path: 'incluir', 
     component: ManterPerfilComponent, 
-    // canLoad: [LoggedInGuard], 
-    // canActivate: [LoggedInGuard]
+    canLoad: [AuthenticationGuard], 
+    canActivate: [AuthenticationGuard]
   },
   { 
     path: 'alterar/:id',
@@ -22,15 +25,17 @@ const ROUTES = [
       entity: PerfilService
     },
     component: ManterPerfilComponent, 
-    
-    // canLoad: [LoggedInGuard], 
-    // canActivate: [LoggedInGuard]
+    canLoad: [AuthenticationGuard], 
+    canActivate: [AuthenticationGuard]
   },
   { 
     path: 'visualizar/:id', 
+    resolve: {
+      entity: PerfilService
+    },
     component: VisualizarPerfilComponent, 
-    // canLoad: [LoggedInGuard], 
-    // canActivate: [LoggedInGuard]
+    canLoad: [AuthenticationGuard], 
+    canActivate: [AuthenticationGuard]
   }
 ];
 export const perfilRoutes = ROUTES;

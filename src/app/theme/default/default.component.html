@@ -2,7 +2,7 @@
     <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
         [nzTrigger]="null">
         <div class="sidebar-logo">
-            <a [routerLink]="['/home']" target="_blank">
+            <a [routerLink]="['/#']" target="_blank">
                 <img src="https://pbs.twimg.com/profile_images/1260427248106115072/M9ofqloN.png" alt="logo">
                 <h1>ReserCoworking</h1>
             </a>
@@ -37,6 +37,13 @@
                     </li>
                     <li nz-menu-item nzMatchRouter>
                         <a [routerLink]="['/espaco']">Espaço</a>
+                    </li>
+                </ul>
+            </li>
+            <li nz-submenu nzOpen nzTitle="Agendamento" nzIcon="calendar">
+                <ul>
+                    <li nz-menu-item nzMatchRouter>
+                        <a [routerLink]="['/agendamentoEspaco']">Agendar</a>
                     </li>
                 </ul>
             </li>

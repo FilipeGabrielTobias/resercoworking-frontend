@@ -1,0 +1,49 @@
+<h1>Incluir Modalidade de Espaço</h1>
+<form nz-form [formGroup]="espacoForm">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nome" nzRequired>Nome</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o nome">
+            <input nz-input id="nome" formControlName="nome" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="descricao" nzRequired>Descrição</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a descrição">
+            <input nz-input id="descricao" formControlName="descricao" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="metrosQuadrados" nzRequired>Metros Quadrados</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe os metros quadrados">
+            <input nz-input id="metrosQuadrados" formControlName="metrosQuadrados" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="pontos" nzRequired>Pontos</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe os pontos">
+            <input nz-input id="pontos" formControlName="pontos" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao">Situação</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a situação">
+            <nz-switch formControlName="situacao"></nz-switch>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="modalidadeEspaco" nzRequired>Modalidade de Espaço</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a modalidade de espaço">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selecione a modalidade de espaço" formControlName="modalidadeEspaco" [compareWith]="comparator.compare('id')">
+                <nz-option *ngFor="let item of modalidades" [nzLabel]="item.descricao" [nzValue]="item"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control nz-col nzSm="2" nzXs="24">
+            <button nz-button nzType="primary" (click)="salvar()">Salvar</button>
+        </nz-form-control>
+        <nz-form-control nz-col nzSm="2" nzXs="24">
+            <button nz-button nzType="default" (click)="voltar()">Voltar</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

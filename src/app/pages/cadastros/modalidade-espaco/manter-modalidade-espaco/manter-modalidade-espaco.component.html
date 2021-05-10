@@ -12,14 +12,10 @@
             <input nz-input id="descricao" formControlName="descricao" />
         </nz-form-control>
     </nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao" nzRequired>Situação</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao">Situação</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a situação">
             <nz-switch formControlName="situacao"></nz-switch>
-            <!-- <nz-select formControlName="situacao">
-                <nz-option nzValue="true" nzLabel="Ativo"></nz-option>
-                <nz-option nzValue="false" nzLabel="Inativo"></nz-option>
-              </nz-select> -->
         </nz-form-control>
     </nz-form-item>
     <nz-form-item nz-row class="register-area">

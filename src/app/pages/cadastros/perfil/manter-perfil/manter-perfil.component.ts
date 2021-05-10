@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PerfilService } from 'src/app/services/domain/perfil.service';
 import { ReactiveFormsUtils } from 'src/app/shared/utils/reactive-forms.utils';
@@ -15,7 +15,10 @@ export class ManterPerfilComponent implements OnInit {
   perfilForm: FormGroup;
   perfil: PerfilModel;
 
-  constructor(private fb: FormBuilder, private perfilService: PerfilService, private router: Router, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, 
+              private perfilService: PerfilService, 
+              private router: Router, 
+              private route: ActivatedRoute) {
     this.perfil = route.snapshot.data.entity || new PerfilModel();
   }
 
@@ -28,6 +31,7 @@ export class ManterPerfilComponent implements OnInit {
       id: [this.perfil.id, []],
       nome: [this.perfil.nome, [Validators.required]],
       descricao: [this.perfil.descricao, [Validators.required]],
+      situacao: [this.perfil.situacao, []]
     });
   }
 

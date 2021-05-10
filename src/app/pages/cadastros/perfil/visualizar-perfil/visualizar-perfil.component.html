@@ -7,8 +7,10 @@
 <p><strong>{{perfil?.nome}}</strong></p>
 <label>Descrição</label>
 <p><strong>{{perfil?.descricao}}</strong></p>
+<label>Situação</label>
+<p><strong>{{(!perfil?.situacao) ? 'Inativo' : 'Ativo'}}</strong></p>
 <div nz-row class="register-area">
-    <div nz-col>
+    <div nz-col nzSm="2" nzXs="24">
         <button nz-button nzType="default" (click)="voltar()">Voltar</button>
     </div>
 </div>

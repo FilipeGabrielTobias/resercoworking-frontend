@@ -1,0 +1,67 @@
+<h1>Incluir Modalidade de Espaço</h1>
+<form nz-form [formGroup]="reservaEspaco">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dataInicial" nzRequired>Data Inicial</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a data inicial">
+            <nz-date-picker [nzFormat]="dateFormat" formControlName="dataInicial"></nz-date-picker>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dataFinal" nzRequired>Data Final</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a data final">
+            <nz-date-picker [nzFormat]="dateFormat" formControlName="dataFinal"></nz-date-picker>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="horaInicial" nzRequired>Hora Inicial</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a hora inicial">
+            <nz-date-picker [nzFormat]="dateFormat" formControlName="horaInicial"></nz-date-picker>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="horaFinal" nzRequired>Hora Final</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a hora final">
+            <nz-date-picker [nzFormat]="dateFormat" formControlName="horaFinal"></nz-date-picker>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="valorTotal" nzRequired>Valor Total</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o valor total">
+            <input nz-input id="valorTotal" formControlName="valorTotal" disabled/>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="quantidadePontosTotal" nzRequired>Quantidade de Pontos Total</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a quantidade de pontos total">
+            <input nz-input id="quantidadePontosTotal" formControlName="quantidadePontosTotal" disabled/>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="formaPagamento" nzRequired>Forma de Pagamento</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a forma de pagamento">
+            <input nz-input id="formaPagamento" formControlName="formaPagamento" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacaoReservaEspaco" nzRequired>Situação da Reserva</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe os situacaoReservaEspaco">
+            <input nz-input id="situacaoReservaEspaco" formControlName="situacaoReservaEspaco" disabled/>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="espaco" nzRequired>Espaço</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o espaço">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selecione o espaço" formControlName="espaco" [compareWith]="comparator.compare('id')">
+                <nz-option *ngFor="let item of espacos" [nzLabel]="item.nome" [nzValue]="item"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+        <nz-form-control nz-col nzSm="2" nzXs="24">
+            <button nz-button nzType="primary" (click)="salvar()">Salvar</button>
+        </nz-form-control>
+        <nz-form-control nz-col nzSm="2" nzXs="24">
+            <button nz-button nzType="default" (click)="voltar()">Voltar</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PremiacaoService } from 'src/app/services/domain/premiacao.service';
+import { ReactiveFormsUtils } from 'src/app/shared/utils/reactive-forms.utils';
 import { PremiacaoModel } from '../../../../models/premiacao.model';
 
 @Component({
@@ -12,20 +13,17 @@ import { PremiacaoModel } from '../../../../models/premiacao.model';
 export class ManterPremiacaoComponent implements OnInit {
 
   premiacaoForm: FormGroup;
-  premiacao: PremiacaoModel = new PremiacaoModel();
+  premiacao: PremiacaoModel;
 
-  constructor(private fb: FormBuilder, private premiacaoService: PremiacaoService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, 
+              private premiacaoService: PremiacaoService, 
+              private router: Router, 
+              private route: ActivatedRoute) { 
+    this.premiacao = this.route.snapshot.data.entity || new PremiacaoModel();
+  }
 
   ngOnInit() {
-    if(this.route.snapshot.params.id) {
-      this.premiacaoService.getPremiacaoById(this.route.snapshot.params.id)
-        .subscribe(value => {
-          this.premiacao = value;
-          this.buidForm();
-        })
-    } else {
-      this.buidForm();
-    }
+    this.buidForm();
   }
 
   buidForm(): void {
@@ -39,8 +37,11 @@ export class ManterPremiacaoComponent implements OnInit {
   }
 
   salvar() {
-    if(this.route.snapshot.params.id) {
-      this.premiacaoService.updatePremiacao(this.route.snapshot.params.id, this.premiacaoForm.value)
+    if (!ReactiveFormsUtils.eval(this.premiacaoForm)) {
+      ReactiveFormsUtils.markForm(this.premiacaoForm);
+    }
+    if(this.premiacao.id) {
+      this.premiacaoService.updatePremiacao(this.premiacao.id, this.premiacaoForm.value)
       .subscribe(value => {
         this.router.navigate(['/premiacao']);
       });

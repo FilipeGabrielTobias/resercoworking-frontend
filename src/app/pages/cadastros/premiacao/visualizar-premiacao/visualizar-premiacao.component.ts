@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PremiacaoService } from 'src/app/services/domain/premiacao.service';
 import { PremiacaoModel } from '../../../../models/premiacao.model';
 
 @Component({
@@ -12,12 +11,14 @@ export class VisualizarPremiacaoComponent implements OnInit {
 
   premiacao: PremiacaoModel;
 
-  constructor(private route: ActivatedRoute, private premiacaoService: PremiacaoService) { }
+  constructor(private route: ActivatedRoute) {
+    this.premiacao = this.route.snapshot.data.entity || new PremiacaoModel();
+  }
 
   ngOnInit() {
-    this.premiacaoService.getPremiacaoById(this.route.snapshot.params.id)
-      .subscribe(value => {
-        this.premiacao = value;
-      })
+  }
+
+  voltar(): void {
+    history.go(-1);
   }
 }

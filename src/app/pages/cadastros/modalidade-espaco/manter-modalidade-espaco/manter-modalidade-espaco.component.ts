@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalidadeEspacoService } from '../../../../services/domain/modalidade-espaco.service';
+import { ReactiveFormsUtils } from 'src/app/shared/utils/reactive-forms.utils';
 import { ModalidadeEspacoModel } from '../../../../models/modalidade-espaco.model';
+import { ModalidadeEspacoService } from '../../../../services/domain/modalidade-espaco.service';
 
 @Component({
   selector: 'app-manter-modalidade-espaco',
@@ -12,20 +13,17 @@ import { ModalidadeEspacoModel } from '../../../../models/modalidade-espaco.mode
 export class ManterModalidadeEspacoComponent implements OnInit {
 
   modalidadeEspacoForm: FormGroup;
-  modalidadeEspaco: ModalidadeEspacoModel = new ModalidadeEspacoModel();
+  modalidadeEspaco: ModalidadeEspacoModel;
 
-  constructor(private fb: FormBuilder, private modalidadeEspacoService: ModalidadeEspacoService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, 
+              private modalidadeEspacoService: ModalidadeEspacoService, 
+              private router: Router, 
+              private route: ActivatedRoute) {
+    this.modalidadeEspaco = this.route.snapshot.data.entity || new ModalidadeEspacoModel();
+  }
 
   ngOnInit() {
-    if(this.route.snapshot.params.id) {
-      this.modalidadeEspacoService.getModalidadeEspacoById(this.route.snapshot.params.id)
-        .subscribe(value => {
-          this.modalidadeEspaco = value;
-          this.buildForm();
-        });
-    } else {
-      this.buildForm();
-    }
+    this.buildForm();
   }
 
   buildForm(): void {
@@ -38,8 +36,12 @@ export class ManterModalidadeEspacoComponent implements OnInit {
   }
 
   salvar() {
-    if (this.route.snapshot.params.id) {
-      this.modalidadeEspacoService.updateModalidadeEspaco(this.route.snapshot.params.id, this.modalidadeEspacoForm.value)
+    if (!ReactiveFormsUtils.eval(this.modalidadeEspacoForm)) {
+      ReactiveFormsUtils.markForm(this.modalidadeEspacoForm);
+      return;
+    }
+    if (this.modalidadeEspaco.id) {
+      this.modalidadeEspacoService.updateModalidadeEspaco(this.modalidadeEspaco.id, this.modalidadeEspacoForm.value)
         .subscribe(value => {
           this.router.navigate(['/modalidadeEspaco']);
         });      

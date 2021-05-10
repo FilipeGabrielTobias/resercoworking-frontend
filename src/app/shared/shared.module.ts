@@ -14,6 +14,9 @@ import { NzSelectModule } from "ng-zorro-antd/select";
 import { NzTableModule } from "ng-zorro-antd/table";
 import { NzModalModule } from "ng-zorro-antd/modal";
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { NzCalendarModule } from 'ng-zorro-antd/calendar';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 @NgModule({
     imports: [
@@ -29,6 +32,9 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
         NzIconModule, 
         NzModalModule,
         NzSwitchModule,
+        NzCalendarModule,
+        NzBadgeModule,
+        NzDatePickerModule,
         FormsModule,
         CommonModule,
         ReactiveFormsModule,
@@ -49,6 +55,9 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
         NzIconModule,
         NzModalModule, 
         NzSwitchModule,
+        NzCalendarModule,
+        NzBadgeModule,
+        NzDatePickerModule,
         FormsModule,
         CommonModule,
         ReactiveFormsModule,

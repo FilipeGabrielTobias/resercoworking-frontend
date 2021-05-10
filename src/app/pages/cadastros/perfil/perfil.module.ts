@@ -5,6 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ListarPerfilComponent } from './listar-perfil/listar-perfil.component';
 import { ManterPerfilComponent } from './manter-perfil/manter-perfil.component';
 import { perfilRoutes } from './perfil.routes';
+import { VisualizarPerfilComponent } from './visualizar-perfil/visualizar-perfil.component';
 
 
 
@@ -16,11 +17,13 @@ import { perfilRoutes } from './perfil.routes';
   ],
   declarations: [
     ListarPerfilComponent, 
-    ManterPerfilComponent
+    ManterPerfilComponent,
+    VisualizarPerfilComponent
   ],
   exports: [
     ListarPerfilComponent, 
-    ManterPerfilComponent
+    ManterPerfilComponent,
+    VisualizarPerfilComponent
   ],
   providers: [
     PerfilService

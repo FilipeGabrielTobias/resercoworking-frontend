@@ -12,6 +12,12 @@
             <input nz-input id="descricao" formControlName="descricao" />
         </nz-form-control>
     </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao">Situação</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24">
+            <nz-switch formControlName="situacao"></nz-switch>
+        </nz-form-control>
+    </nz-form-item>
     <nz-form-item nz-row class="register-area">
         <nz-form-control nz-col nzSm="2" nzXs="24">
             <button nz-button nzType="primary" (click)="salvar()">Salvar</button>
