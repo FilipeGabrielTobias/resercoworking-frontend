@@ -7,6 +7,7 @@ import { ListarReservaEspacoComponent } from './listar-reserva-espaco/listar-res
 import { ManterReservaEspacoComponent } from './manter-reserva-espaco/manter-reserva-espaco.component';
 import { reservaEspacoRoutes } from './reserva-espaco.routes';
 import { VisualizarReservaEspacoComponent } from './visualizar-reserva-espaco/visualizar-reserva-espaco.component';
+import { CancelarReservaEspacoModalComponent } from './cancelar-reserva-espaco-modal/cancelar-reserva-espaco-modal.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { VisualizarReservaEspacoComponent } from './visualizar-reserva-espaco/vi
   declarations: [
     VisualizarReservaEspacoComponent,
     ManterReservaEspacoComponent,
-    ListarReservaEspacoComponent
+    ListarReservaEspacoComponent,
+    CancelarReservaEspacoModalComponent
   ],
   exports: [
     VisualizarReservaEspacoComponent,

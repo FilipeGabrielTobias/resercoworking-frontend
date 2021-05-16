@@ -17,6 +17,9 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzCalendarModule } from 'ng-zorro-antd/calendar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 @NgModule({
     imports: [
@@ -35,6 +38,9 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
         NzCalendarModule,
         NzBadgeModule,
         NzDatePickerModule,
+        NzTimePickerModule,
+        NzInputNumberModule,
+        NzUploadModule,
         FormsModule,
         CommonModule,
         ReactiveFormsModule,
@@ -58,6 +64,9 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
         NzCalendarModule,
         NzBadgeModule,
         NzDatePickerModule,
+        NzTimePickerModule,
+        NzInputNumberModule,
+        NzUploadModule,
         FormsModule,
         CommonModule,
         ReactiveFormsModule,

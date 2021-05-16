@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EspacoModel } from 'src/app/models/espaco.model';
-import { ModalidadeEspacoModel } from '../../../../models/modalidade-espaco.model';
 
 @Component({
   selector: 'app-visualizar-espaco',

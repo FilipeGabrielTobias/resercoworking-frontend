@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { first } from 'rxjs/operators';
-import { EspacoResumoModel } from 'src/app/models/espaco-resumo.model';
 import { ReservaEspacoResumoModel } from 'src/app/models/reserva-espaco-resumo.model';
-import { EspacoService } from 'src/app/services/domain/espaco.service';
 import { ReservaEspacoService } from 'src/app/services/domain/reserva-espaco.service';
+import { CancelarReservaEspacoModalComponent } from '../cancelar-reserva-espaco-modal/cancelar-reserva-espaco-modal.component';
 
 @Component({
   selector: 'app-listar-reserva-espaco',
@@ -19,7 +19,8 @@ export class ListarReservaEspacoComponent implements OnInit {
   constructor(private router: Router, 
               private route: ActivatedRoute, 
               private reservaEspacoService: ReservaEspacoService,
-              private modalService: NzModalService) { }
+              private modalService: NzModalService,
+              private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit(): void {
     this.getModalidades();
@@ -39,21 +40,28 @@ export class ListarReservaEspacoComponent implements OnInit {
     this.router.navigate(['./alterar', data.id], {relativeTo: this.route});
   }
 
-  mostrarModalConfirmacao(id: number): void {
-    this.modalService.confirm({
-      nzTitle: 'Você tem certeza que deseja excluir o registro?',
-      nzContent: '<b style="color: red;">Ao excluir não será possível desfazer</b>',
-      nzOkText: 'Sim',
-      nzOkType: 'primary',
-      nzOkDanger: true,
-      nzOnOk: () => this.excluir(id),
-      nzCancelText: 'Não',
-      nzOnCancel: () => console.log('Cancel')
+  mostrarModalConfirmacao(data: ReservaEspacoResumoModel): void {
+    const modal = this.modalService.create({
+      nzTitle: 'Cancelar Reserva de Espaço',
+      nzContent: CancelarReservaEspacoModalComponent,
+      nzViewContainerRef: this.viewContainerRef,
+      nzComponentParams: {
+        reservaEspacoResumoModal: data
+      },
+      nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
+      nzFooter: [
+        {
+          label: 'Cancelar',
+          onClick: componentInstance => {
+            this.cancelarReservaEspaco(componentInstance!.cancelarReservaEspacoForm);
+          }
+        }
+      ]
     });
   }
 
-  excluir(id: number): void {
-    this.reservaEspacoService.cancelarReservaEspaco(id)
+  cancelarReservaEspaco(form: FormGroup): void {
+    this.reservaEspacoService.cancelarReservaEspaco(form.value)
       .subscribe(() => {
         this.getModalidades();
       });

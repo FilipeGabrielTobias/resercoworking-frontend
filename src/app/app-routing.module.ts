@@ -44,8 +44,8 @@ const routes: Routes = [
         loadChildren: () => import('./pages/cadastros/espaco/espaco.module').then(m => m.EspacoModule) 
       },
       { 
-        path: 'agendamentoEspaco', 
-        loadChildren: () => import('./pages/agendamentos/agendamento-espaco/reserva-espaco.module').then(m => m.ReservaEspacoModule) 
+        path: 'reserva-espaco', 
+        loadChildren: () => import('./pages/reservas/reserva-espaco/reserva-espaco.module').then(m => m.ReservaEspacoModule) 
       }
     ]
   }

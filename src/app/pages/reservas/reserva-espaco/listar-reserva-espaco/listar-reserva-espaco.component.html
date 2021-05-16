@@ -17,15 +17,15 @@
     <tbody>
         <tr *ngFor="let data of basicTable.data" (click)="visualizar(data)">
             <td>{{ data?.id }}</td>
-            <td>{{ data?.dataInicial }}</td>
-            <td>{{ data?.dataFinal }}</td>
-            <td>{{ data?.horaInicial }}</td>
-            <td>{{ data?.horaFinal }}</td>
-            <td>{{ (!data?.situacao) ? 'Inativo' : 'Ativo' }}</td>
+            <td>{{ data?.dataInicial | date : 'dd/MM/yyyy' }}</td>
+            <td>{{ data?.dataFinal | date : 'dd/MM/yyyy' }}</td>
+            <td>{{ data?.horaInicial | date : 'HH:mm' }}</td>
+            <td>{{ data?.horaFinal | date : 'HH:mm' }}</td>
+            <td>{{ data?.situacaoReservaEspaco }}</td>
             <td (click)="$event.stopPropagation()">
                 <button nz-button (click)="alterar(data)"><i nz-icon nzType="edit"></i></button>
                 <nz-divider nzType="vertical"></nz-divider>
-                <button nz-button (click)="mostrarModalConfirmacao(data.id)"><i nz-icon nzType="delete"></i></button>
+                <button nz-button (click)="mostrarModalConfirmacao(data)"><i nz-icon nzType="delete"></i></button>
             </td>
         </tr>
     </tbody>

@@ -3,8 +3,8 @@ export class EspacoModel {
     nome: string;
     descricao: string;
     metrosQuadrados: number;
-    pontos: number;
-    nota: number;
+    quantidadePontos: number;
+    nota: number = 0;
     situacao: boolean = true;
     modalidadeEspaco: ModalidadeEspaco;
 }

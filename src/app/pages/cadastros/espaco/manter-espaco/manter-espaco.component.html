@@ -15,13 +15,14 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="metrosQuadrados" nzRequired>Metros Quadrados</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe os metros quadrados">
-            <input nz-input id="metrosQuadrados" formControlName="metrosQuadrados" />
+            <nz-input-number formControlName="metrosQuadrados" id="metrosQuadrados" [nzMin]="0" [nzStep]="0.1">
+            </nz-input-number>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="pontos" nzRequired>Pontos</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe os pontos">
-            <input nz-input id="pontos" formControlName="pontos" />
+            <nz-input-number formControlName="quantidadePontos" id="pontos" [nzMin]="0" [nzStep]="1"></nz-input-number>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao">Situação</nz-form-label>
@@ -33,10 +34,18 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="modalidadeEspaco" nzRequired>Modalidade de Espaço</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a modalidade de espaço">
-            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selecione a modalidade de espaço" formControlName="modalidadeEspaco" [compareWith]="comparator.compare('id')">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selecione a modalidade de espaço"
+                formControlName="modalidadeEspaco" [compareWith]="comparator.compare('id')">
                 <nz-option *ngFor="let item of modalidades" [nzLabel]="item.descricao" [nzValue]="item"></nz-option>
             </nz-select>
         </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="modalidadeEspaco" nzRequired>Modalidade de Espaço</nz-form-label>
+    <nz-form-item>
+        <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+            [nzHeaders]="{ authorization: 'authorization-text' }" [nzBeforeUpload]="beforeUpload" (nzChange)="handleChange($event)">
+            <button nz-button><i nz-icon nzType="upload"></i>Click to Upload</button>
+        </nz-upload>
     </nz-form-item>
     <nz-form-item nz-row class="register-area">
         <nz-form-control nz-col nzSm="2" nzXs="24">

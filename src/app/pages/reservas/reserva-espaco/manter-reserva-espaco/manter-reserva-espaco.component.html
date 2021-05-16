@@ -1,5 +1,13 @@
 <h1>Incluir Modalidade de Espaço</h1>
-<form nz-form [formGroup]="reservaEspaco">
+<form nz-form [formGroup]="reservaEspacoForm">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="espaco" nzRequired>Espaço</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o espaço">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selecione o espaço" formControlName="espaco" [compareWith]="comparator.compare('id')">
+                <nz-option *ngFor="let item of espacos" [nzLabel]="item.nome" [nzValue]="item"></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dataInicial" nzRequired>Data Inicial</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a data inicial">
@@ -15,25 +23,25 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="horaInicial" nzRequired>Hora Inicial</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a hora inicial">
-            <nz-date-picker [nzFormat]="dateFormat" formControlName="horaInicial"></nz-date-picker>
+            <nz-time-picker formControlName="horaInicial" [nzFormat]="timeFormat" [nzMinuteStep]="30"></nz-time-picker>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="horaFinal" nzRequired>Hora Final</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a hora final">
-            <nz-date-picker [nzFormat]="dateFormat" formControlName="horaFinal"></nz-date-picker>
+            <nz-time-picker formControlName="horaFinal" [nzFormat]="timeFormat" [nzMinuteStep]="30"></nz-time-picker>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="valorTotal" nzRequired>Valor Total</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o valor total">
-            <input nz-input id="valorTotal" formControlName="valorTotal" disabled/>
+            <input nz-input id="valorTotal" formControlName="valorTotal"/>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="quantidadePontosTotal" nzRequired>Quantidade de Pontos Total</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a quantidade de pontos total">
-            <input nz-input id="quantidadePontosTotal" formControlName="quantidadePontosTotal" disabled/>
+            <input nz-input id="quantidadePontosTotal" formControlName="quantidadePontosTotal"/>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="formaPagamento" nzRequired>Forma de Pagamento</nz-form-label>
@@ -45,15 +53,7 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacaoReservaEspaco" nzRequired>Situação da Reserva</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe os situacaoReservaEspaco">
-            <input nz-input id="situacaoReservaEspaco" formControlName="situacaoReservaEspaco" disabled/>
-        </nz-form-control>
-    </nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="espaco" nzRequired>Espaço</nz-form-label>
-    <nz-form-item>
-        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o espaço">
-            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selecione o espaço" formControlName="espaco" [compareWith]="comparator.compare('id')">
-                <nz-option *ngFor="let item of espacos" [nzLabel]="item.nome" [nzValue]="item"></nz-option>
-            </nz-select>
+            <input nz-input id="situacaoReservaEspaco" formControlName="situacaoReservaEspaco"/>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item nz-row class="register-area">

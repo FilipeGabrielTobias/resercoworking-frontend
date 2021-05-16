@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
+import { Observable, Observer } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { EspacoModel } from 'src/app/models/espaco.model';
 import { EspacoService } from 'src/app/services/domain/espaco.service';
@@ -20,6 +22,8 @@ export class ManterEspacoComponent implements OnInit {
   espaco: EspacoModel;
   modalidades: ModalidadeEspacoModel[] = [];
   comparator = ComparatorUtils.getInstance();
+  loading = false;
+  avatarUrl?: string;
 
   constructor(private fb: FormBuilder, 
               private espacoService: EspacoService, 
@@ -42,11 +46,38 @@ export class ManterEspacoComponent implements OnInit {
       nome: [this.espaco.nome, [Validators.required]],
       descricao: [this.espaco.descricao, [Validators.required]],
       metrosQuadrados: [this.espaco.metrosQuadrados, [Validators.required]],
-      pontos: [this.espaco.pontos, [Validators.required]],
+      quantidadePontos: [this.espaco.quantidadePontos, [Validators.required]],
       nota: [this.espaco.nota, []],
       situacao: [this.espaco.situacao, [Validators.required]],
-      modalidadeEspaco: [this.espaco.modalidadeEspaco, [Validators.required]]
+      modalidadeEspaco: [this.espaco.modalidadeEspaco, [Validators.required]],
+      imagem: [[], []]
     });
+  }
+
+  beforeUpload = (file: NzUploadFile, _fileList: NzUploadFile[]) => {
+    return new Observable((observer: Observer<boolean>) => {
+      const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+      if (!isJpgOrPng) {
+        observer.complete();
+        return;
+      }
+      const isLt2M = file.size! / 1024 / 1024 < 2;
+      if (!isLt2M) {
+        observer.complete();
+        return;
+      }
+      observer.next(isJpgOrPng && isLt2M);
+      observer.complete();
+    });
+  };
+
+  handleChange(info: NzUploadChangeParam): void {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+    } else if (info.file.status === 'error') {
+    }
   }
 
   salvar() {

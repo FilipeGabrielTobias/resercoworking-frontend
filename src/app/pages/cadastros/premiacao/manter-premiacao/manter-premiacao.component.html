@@ -15,7 +15,7 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="pontosNecessarios">Pontos Necessários</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe os pontos necessários">
-            <input nz-input formControlName="pontosNecessarios" id="pontosNecessarios" />
+            <nz-input-number formControlName="pontosNecessarios" id="pontosNecessarios" [nzMin]="0" [nzStep]="1"></nz-input-number>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao">Situação</nz-form-label>
