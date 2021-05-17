@@ -24,6 +24,8 @@ export class ManterEspacoComponent implements OnInit {
   comparator = ComparatorUtils.getInstance();
   loading = false;
   avatarUrl?: string;
+  formatterDollar = (value: number) => `R$ ${value}`;
+  parserDollar = (value: string) => value.replace('R$ ', '');
 
   constructor(private fb: FormBuilder, 
               private espacoService: EspacoService, 
@@ -47,6 +49,7 @@ export class ManterEspacoComponent implements OnInit {
       descricao: [this.espaco.descricao, [Validators.required]],
       metrosQuadrados: [this.espaco.metrosQuadrados, [Validators.required]],
       quantidadePontos: [this.espaco.quantidadePontos, [Validators.required]],
+      valorHora: [this.espaco.valorHora, [Validators.required]],
       nota: [this.espaco.nota, []],
       situacao: [this.espaco.situacao, [Validators.required]],
       modalidadeEspaco: [this.espaco.modalidadeEspaco, [Validators.required]],

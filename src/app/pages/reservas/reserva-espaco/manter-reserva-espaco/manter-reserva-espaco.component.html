@@ -11,25 +11,25 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dataInicial" nzRequired>Data Inicial</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a data inicial">
-            <nz-date-picker [nzFormat]="dateFormat" formControlName="dataInicial"></nz-date-picker>
+            <nz-date-picker style="width: 100%;" [nzFormat]="dateFormat" formControlName="dataInicial" [nzPlaceHolder]="'selecione a data inicial'"></nz-date-picker>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dataFinal" nzRequired>Data Final</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a data final">
-            <nz-date-picker [nzFormat]="dateFormat" formControlName="dataFinal"></nz-date-picker>
+            <nz-date-picker style="width: 100%;" [nzFormat]="dateFormat" formControlName="dataFinal" [nzPlaceHolder]="'selecione a data final'"></nz-date-picker>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="horaInicial" nzRequired>Hora Inicial</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a hora inicial">
-            <nz-time-picker formControlName="horaInicial" [nzFormat]="timeFormat" [nzMinuteStep]="30"></nz-time-picker>
+            <nz-time-picker style="width: 100%;" formControlName="horaInicial" [nzFormat]="timeFormat" [nzMinuteStep]="30" [nzPlaceHolder]="'selecione a hora inicial'"></nz-time-picker>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="horaFinal" nzRequired>Hora Final</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a hora final">
-            <nz-time-picker formControlName="horaFinal" [nzFormat]="timeFormat" [nzMinuteStep]="30"></nz-time-picker>
+            <nz-time-picker style="width: 100%;" formControlName="horaFinal" [nzFormat]="timeFormat" [nzMinuteStep]="30" [nzPlaceHolder]="'selecione a hora final'"></nz-time-picker>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="valorTotal" nzRequired>Valor Total</nz-form-label>

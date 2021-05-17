@@ -4,7 +4,8 @@ export class EspacoModel {
     descricao: string;
     metrosQuadrados: number;
     quantidadePontos: number;
-    nota: number = 0;
+    valorHora: number = 0;
+    nota: number = 0.0;
     situacao: boolean = true;
     modalidadeEspaco: ModalidadeEspaco;
 }

@@ -36,6 +36,10 @@ export class ReservaEspacoService implements Resolve<ReservaEspacoModel> {
         return this.http.put<ReservaEspacoModel>(environment.api + this.baseUrl() + `/${id}`, form);
     }
 
+    finalizarReservaEspaco(reservaId: number, form: any): Observable<any> {
+        return this.http.post<any>(environment.api + this.baseUrl() + `/${reservaId}/finalizar-reserva`, form);
+    }
+
     cancelarReservaEspaco(form: any): Observable<any> {
         return this.http.post<any>(environment.api + this.baseUrl() + `/cancelar-reserva`, form);
     }

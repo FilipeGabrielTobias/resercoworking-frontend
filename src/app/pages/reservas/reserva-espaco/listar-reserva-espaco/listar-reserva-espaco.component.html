@@ -23,8 +23,7 @@
             <td>{{ data?.horaFinal | date : 'HH:mm' }}</td>
             <td>{{ data?.situacaoReservaEspaco }}</td>
             <td (click)="$event.stopPropagation()">
-                <button nz-button (click)="alterar(data)"><i nz-icon nzType="edit"></i></button>
-                <nz-divider nzType="vertical"></nz-divider>
+                <button nz-button (click)="mostratModalFinalizarReserva(data)" *ngIf="podeFinalizar(data)"><i nz-icon nzType="check"></i></button>
                 <button nz-button (click)="mostrarModalConfirmacao(data)"><i nz-icon nzType="delete"></i></button>
             </td>
         </tr>

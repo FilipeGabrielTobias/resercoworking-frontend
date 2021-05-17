@@ -1,19 +1,22 @@
-<h1>Visualização de Espaço</h1>
-<label>Nome</label>
-<p><strong>{{espaco?.nome}}</strong></p>
-<label>Descrição</label>
-<p><strong>{{espaco?.descricao}}</strong></p>
-<label>Metros Quadrados</label>
-<p><strong>{{espaco?.metrosQuadrados}}</strong></p>
-<label>Pontos</label>
-<p><strong>{{espaco?.quantidadePontos}}</strong></p>
-<label>Nota</label>
-<p><strong>{{espaco?.nota}}</strong></p>
-<label>Situação</label>
-<p><strong>{{(!espaco?.situacao) ? 'Inativa' : 'Ativo'}}</strong></p>
-<label>Modalidade de Espaço</label>
-<p><strong>{{espaco?.modalidadeEspaco.descricao}}</strong></p>
+<h1>Visualização de Reserva de Espaço</h1>
+<label>Espaço</label>
+<p><strong>{{reservaEspaco?.espaco?.descricao}}</strong></p>
+<label>Data Inicial</label>
+<p><strong>{{reservaEspaco?.dataInicial | date : 'dd/MM/yyyy'}}</strong></p>
+<label>Data Final</label>
+<p><strong>{{reservaEspaco?.dataFinal | date : 'dd/MM/yyyy'}}</strong></p>
+<label>Hora Inicial</label>
+<p><strong>{{reservaEspaco?.horaInicial | date : 'HH:mm'}}</strong></p>
+<label>Hora Final</label>
+<p><strong>{{reservaEspaco?.horaFinal | date : 'HH:mm'}}</strong></p>
+<label>Valor Total</label>
+<p><strong>{{reservaEspaco?.valorTotal | currency:'BRL':true}}</strong></p>
+<label>Quantidade de Pontos Total</label>
+<p><strong>{{reservaEspaco?.quantidadePontosTotal}}</strong></p>
 <div nz-row class="register-area">
+    <div nz-col nzSm="2" nzXs="24" *ngIf="podeFinalizar()">
+        <button nz-button nzType="primary" (click)="finalizar()">Finalizar</button>
+    </div>
     <div nz-col nzSm="2" nzXs="24">
         <button nz-button nzType="default" (click)="voltar()">Voltar</button>
     </div>

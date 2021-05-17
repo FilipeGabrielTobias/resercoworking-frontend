@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EspacoModel } from 'src/app/models/espaco.model';
+import { ReservaEspacoModel } from 'src/app/models/reserva-espaco.model';
 
 @Component({
   selector: 'app-visualizar-reserva-espaco',
@@ -9,13 +10,21 @@ import { EspacoModel } from 'src/app/models/espaco.model';
 })
 export class VisualizarReservaEspacoComponent implements OnInit {
 
-  espaco: EspacoModel;
+  reservaEspaco: ReservaEspacoModel;
 
   constructor(private route: ActivatedRoute) {
-    this.espaco = this.route.snapshot.data.entity || new EspacoModel();
+    this.reservaEspaco = this.route.snapshot.data.entity || new ReservaEspacoModel();
   }
 
   ngOnInit() {
+  }
+
+  finalizar(): void {
+
+  }
+
+  podeFinalizar(): boolean {
+    return this.reservaEspaco.situacaoReservaEspaco === 'RESERVADO';
   }
 
   voltar(): void {

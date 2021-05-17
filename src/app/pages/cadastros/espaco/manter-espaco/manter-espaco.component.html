@@ -19,10 +19,16 @@
             </nz-input-number>
         </nz-form-control>
     </nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="pontos" nzRequired>Pontos</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="quantidadePontos" nzRequired>Quantidade de Pontos</nz-form-label>
     <nz-form-item>
-        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe os pontos">
-            <nz-input-number formControlName="quantidadePontos" id="pontos" [nzMin]="0" [nzStep]="1"></nz-input-number>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a quantidade de pontos">
+            <nz-input-number formControlName="quantidadePontos" id="quantidadePontos" [nzMin]="0" [nzStep]="1"></nz-input-number>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="valorHora" nzRequired>Valor Hora</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o valor hora">
+            <nz-input-number [nzFormatter]="formatterDollar" [nzParser]="parserDollar" formControlName="valorHora" id="valorHora" [nzMin]="0" [nzStep]="0.1"></nz-input-number>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao">Situação</nz-form-label>

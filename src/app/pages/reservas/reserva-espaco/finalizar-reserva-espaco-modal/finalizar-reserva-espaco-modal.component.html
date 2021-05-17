@@ -1,0 +1,14 @@
+<form nz-form [formGroup]="finalizarReservaEspacoForm">
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="descricao" nzRequired>Descrição</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="Informe a descrição">
+            <textarea rows="4" nz-input formControlName="descricao"></textarea>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nota" nzRequired>Nota</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="24" [nzXs]="24" nzErrorTip="Informe a nota">
+            <nz-input-number style="width: 100%;" formControlName="nota" id="nota" [nzMin]="0" [nzMax]="10" [nzStep]="0.1"></nz-input-number>
+        </nz-form-control>
+    </nz-form-item>
+</form>
