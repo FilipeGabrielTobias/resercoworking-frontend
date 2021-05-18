@@ -15,20 +15,20 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="metrosQuadrados" nzRequired>Metros Quadrados</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe os metros quadrados">
-            <nz-input-number formControlName="metrosQuadrados" id="metrosQuadrados" [nzMin]="0" [nzStep]="0.1">
+            <nz-input-number style="width: 100%;" formControlName="metrosQuadrados" id="metrosQuadrados" [nzMin]="0" [nzStep]="0.1">
             </nz-input-number>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="quantidadePontos" nzRequired>Quantidade de Pontos</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a quantidade de pontos">
-            <nz-input-number formControlName="quantidadePontos" id="quantidadePontos" [nzMin]="0" [nzStep]="1"></nz-input-number>
+            <nz-input-number style="width: 100%;" formControlName="quantidadePontos" id="quantidadePontos" [nzMin]="0" [nzStep]="1"></nz-input-number>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="valorHora" nzRequired>Valor Hora</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o valor hora">
-            <nz-input-number [nzFormatter]="formatterDollar" [nzParser]="parserDollar" formControlName="valorHora" id="valorHora" [nzMin]="0" [nzStep]="0.1"></nz-input-number>
+            <nz-input-number style="width: 100%;" [nzFormatter]="formatterDollar" [nzParser]="parserDollar" formControlName="valorHora" id="valorHora" [nzMin]="0" [nzStep]="0.1"></nz-input-number>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao">Situação</nz-form-label>
@@ -46,13 +46,13 @@
             </nz-select>
         </nz-form-control>
     </nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="modalidadeEspaco" nzRequired>Modalidade de Espaço</nz-form-label>
+    <!-- <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="modalidadeEspaco" nzRequired>Modalidade de Espaço</nz-form-label>
     <nz-form-item>
         <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
             [nzHeaders]="{ authorization: 'authorization-text' }" [nzBeforeUpload]="beforeUpload" (nzChange)="handleChange($event)">
             <button nz-button><i nz-icon nzType="upload"></i>Click to Upload</button>
         </nz-upload>
-    </nz-form-item>
+    </nz-form-item> -->
     <nz-form-item nz-row class="register-area">
         <nz-form-control nz-col nzSm="2" nzXs="24">
             <button nz-button nzType="primary" (click)="salvar()">Salvar</button>

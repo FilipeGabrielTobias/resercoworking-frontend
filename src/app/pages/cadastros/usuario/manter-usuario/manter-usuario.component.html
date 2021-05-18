@@ -6,16 +6,34 @@
             <input nz-input id="nome" formControlName="nome" />
         </nz-form-control>
     </nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="sobrenome" nzRequired>Sobrenome</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="cpf" nzRequired>CPF</nz-form-label>
     <nz-form-item>
-        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o sobrenome">
-            <input nz-input id="sobrenome" formControlName="sobrenome" />
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o cpf">
+            <input nz-input id="cpf" formControlName="cpf" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="dataNascimento" nzRequired>Data de Nascimento</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a data de nascimento">
+            <nz-date-picker style="width: 100%;" [nzFormat]="dateFormat" formControlName="dataNascimento" [nzPlaceHolder]="'selecione a data de nascimento'"></nz-date-picker>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="telefone" nzRequired>Telefone</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o telefone">
+            <input nz-input id="telefone" formControlName="telefone" />
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe o e-mail">
             <input nz-input formControlName="email" id="email" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="quantidadePontos" nzRequired>Quantidade de Pontos</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a quantidade de pontos">
+            <input nz-input id="quantidadePontos" formControlName="quantidadePontos" />
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="senha" nzRequired>Senha</nz-form-label>
@@ -37,6 +55,12 @@
                     Senhas incompatíveis!
                 </ng-container>
             </ng-template>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacao">Situação</nz-form-label>
+    <nz-form-item>
+        <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a situação">
+            <nz-switch formControlName="situacao"></nz-switch>
         </nz-form-control>
     </nz-form-item>
     <div *ngIf="!clienteCad">

@@ -6,6 +6,7 @@ import { ManterUsuarioComponent } from './manter-usuario/manter-usuario.componen
 import { usuarioRoutes } from './usuario.routes';
 import { UsuarioService } from '../../../services/domain/usuario.service';
 import { PerfilService } from 'src/app/services/domain/perfil.service';
+import { VisualizarUsuarioComponent } from './visualizar-usuario/visualizar-usuario.component';
 
 @NgModule({
   imports: [
@@ -14,11 +15,13 @@ import { PerfilService } from 'src/app/services/domain/perfil.service';
   ],
   declarations: [
     ManterUsuarioComponent, 
-    ListarUsuarioComponent
+    ListarUsuarioComponent,
+    VisualizarUsuarioComponent
   ],
   exports: [
     ManterUsuarioComponent, 
-    ListarUsuarioComponent
+    ListarUsuarioComponent,
+    VisualizarUsuarioComponent
   ],
   providers: [
     UsuarioService,

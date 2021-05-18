@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { UsuarioModel } from 'src/app/models/usuario.model';
 import { PerfilService } from 'src/app/services/domain/perfil.service';
 import { ReactiveFormsUtils } from 'src/app/shared/utils/reactive-forms.utils';
 import { PerfilModel } from '../../../../models/perfil.model';
@@ -14,7 +15,9 @@ import { UsuarioService } from '../../../../services/domain/usuario.service';
 })
 export class ManterUsuarioComponent implements OnInit {
 
+  dateFormat = 'dd/MM/yyyy';
   usuarioForm: FormGroup;
+  usuario: UsuarioModel;
   perfis: PerfilModel[] = [];
   clienteCad: boolean;
 
@@ -22,7 +25,9 @@ export class ManterUsuarioComponent implements OnInit {
               private UsuarioService: UsuarioService, 
               private perfilService: PerfilService, 
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+                this.usuario = this.route.snapshot.data.entity || new UsuarioModel();
+               }
 
   ngOnInit() {
     if (this.route.snapshot.queryParamMap.get('clienteCad')) {
@@ -31,10 +36,14 @@ export class ManterUsuarioComponent implements OnInit {
     this.perfilService.getPerfis().pipe(first()).subscribe(value => this.perfis = value);
     this.usuarioForm = this.fb.group({
       nome: [null, [Validators.required]],
-      sobrenome: [null, [Validators.required]],
+      cpf: [null, [Validators.required]],
+      dataNascimento: [null, [Validators.required]],
+      telefone: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
+      quantidadePontos: [null, [Validators.required]],
       senha: [null, [Validators.required]],
       confirmacaoSenha: [null, [Validators.required, this.confirmationValidator]],
+      situacao: [null, [Validators.required]],
       perfil: [null, [Validators.required]]
     });
   }
@@ -54,6 +63,7 @@ export class ManterUsuarioComponent implements OnInit {
 
   salvar() {
     if (!ReactiveFormsUtils.eval(this.usuarioForm)) {
+      ReactiveFormsUtils.markForm(this.usuarioForm);
       return;
     }
     this.UsuarioService.saveUsuario(this.usuarioForm.value)

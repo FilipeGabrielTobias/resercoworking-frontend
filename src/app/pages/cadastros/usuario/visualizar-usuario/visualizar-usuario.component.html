@@ -1,0 +1,22 @@
+<h1>Visualização Modalidade de Espaço</h1>
+<label>Nome</label>
+<p><strong>{{usuario?.nome}}</strong></p>
+<label>CPF</label>
+<p><strong>{{usuario?.cpf}}</strong></p>
+<label>Data de Nascimento</label>
+<p><strong>{{usuario?.dataNascimento | date : 'dd/MM/yyyy'}}</strong></p>
+<label>Telefone</label>
+<p><strong>{{usuario?.telefone}}</strong></p>
+<label>E-mail</label>
+<p><strong>{{usuario?.email}}</strong></p>
+<label>Quantidade de Pontos</label>
+<p><strong>{{usuario?.quantidadePontos}}</strong></p>
+<label>Situação</label>
+<p><strong>{{(!usuario?.situacao) ? 'Inativa' : 'Ativo'}}</strong></p>
+<label>Perfil</label>
+<p><strong>{{usuario?.perfis[0].nome}}</strong></p>
+<div nz-row class="register-area">
+    <div nz-col nzSm="2" nzXs="24">
+        <button nz-button nzType="default" (click)="voltar()">Voltar</button>
+    </div>
+</div>

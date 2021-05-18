@@ -12,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let data of basicTable.data">
+        <tr *ngFor="let data of basicTable.data" (click)="visualizar(data)">
             <td>{{ data?.id }}</td>
             <td>{{ data?.nome }}</td>
             <td>{{ data?.email }}</td>

@@ -47,7 +47,12 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="formaPagamento" nzRequired>Forma de Pagamento</nz-form-label>
     <nz-form-item>
         <nz-form-control [nzSm]="6" [nzXs]="24" nzErrorTip="Informe a forma de pagamento">
-            <input nz-input id="formaPagamento" formControlName="formaPagamento" />
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Selecione a forma de pagamento" formControlName="formaPagamento">
+                <nz-option nzValue="DINHEIRO" nzLabel="Dinheiro"></nz-option>
+                <nz-option nzValue="CARTAO_CREDITO" nzLabel="Cartão de Crédito"></nz-option>
+                <nz-option nzValue="CARTAO_DEBITO" nzLabel="Cartão de Débito"></nz-option>
+                <nz-option nzValue="BOLETO" nzLabel="Boleto"></nz-option>
+            </nz-select>
         </nz-form-control>
     </nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="situacaoReservaEspaco" nzRequired>Situação da Reserva</nz-form-label>

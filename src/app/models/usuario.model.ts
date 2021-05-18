@@ -1,7 +1,13 @@
+import { PerfilModel } from "./perfil.model";
+
 export class UsuarioModel {
     id: number;
     nome: string;
-    sobrenome: string;
+    cpf: string;
+    dataNascimento: Date;
+    telefone: string;
     email: string;
+    quantidadePontos: number;
     situacao: boolean;
+    perfis: PerfilModel[];
 }

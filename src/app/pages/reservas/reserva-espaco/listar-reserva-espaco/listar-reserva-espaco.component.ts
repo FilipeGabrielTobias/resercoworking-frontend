@@ -40,7 +40,7 @@ export class ListarReservaEspacoComponent implements OnInit {
 
   mostratModalFinalizarReserva(data: ReservaEspacoResumoModel): void {
     const modal = this.modalService.create({
-      nzTitle: 'Finalizar Reserva de Espaço',
+      nzTitle: 'Finalizar Reserva de Espaço - Feedback',
       nzContent: FinalizarReservaEspacoModalComponent,
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {
